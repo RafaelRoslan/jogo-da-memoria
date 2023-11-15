@@ -1,0 +1,85 @@
+body{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #df91f3;
+    user-select: none;
+}
+
+.container{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    border: 1px solid #ffffff;
+    padding: 2rem;
+}
+
+h2{
+    font-size: 3em;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.reset{
+    padding: 15px 20px;
+    width: 100%;
+    color: #000000;
+    background-color: #ffffff;
+    border: none;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: 600;
+
+    &:focus{
+        color: #df91f3;
+        background-color: #000000;
+    }
+}
+
+.game{
+    width: 450px;
+    height: 450px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    transform-style: preserve-3d;
+    perspective: 500px;
+}
+
+.card{
+    position: relative;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+
+    font-size: 3em;
+    transform: rotateY(180deg);
+    transition: 0.25s;
+
+    &::after{
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-color: #ffffff;
+        transition: 0.25s;
+        transform: rotateY(0deg);
+        backface-visibility: hidden;
+    }
+
+    &.boxOpen{
+        transform: rotateY(0deg);
+    }
+}
+
+.boxOpen::after, .boxMatch::after{
+    transform: rotateY(180deg);
+}
